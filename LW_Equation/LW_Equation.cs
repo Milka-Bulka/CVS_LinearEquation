@@ -8,7 +8,8 @@ namespace LW_Equation
 {
     public class LinearEquation
     {
-        List<float> coefficients;
+        //List<float> coefficients;
+        List<float> coefficients = new List<float>();
         public int Size => coefficients.Count;
 
         /// <summary>
@@ -24,33 +25,45 @@ namespace LW_Equation
         /// 
         /// <param name="aN">Последний коэффициент</param>
         /// <param name="coefficients">Остальные коэффициенты</param>
-        public LinearEquation(float aN, params float[] coefficients)
+        /// 
+
+        public LinearEquation(params float[] coefficients)
         {
             this.coefficients.AddRange(coefficients);
-            this.coefficients.Add(aN);
         }
         public LinearEquation(List<float> coefficients)
         {
-            this.coefficients = new List<float>();
             this.coefficients = coefficients;
         }
 
         /// <summary>
         /// Суммирует свободный член first с second
         /// </summary>
+        //static public LinearEquation operator +(LinearEquation first, float second)
+        //{
+        //    LinearEquation equation = first;
+        //    equation.coefficients[0] *= second;
+        //    return equation;
+        //}
         static public LinearEquation operator +(LinearEquation first, float second)
         {
             LinearEquation equation = first;
-            equation.coefficients[0] *= second;
+            equation.coefficients[equation.Size - 1] += second;
             return equation;
         }
         /// <summary>
         /// Вычитает second из свободного члена first
         /// </summary>
+        //static public LinearEquation operator -(LinearEquation first, float second)
+        //{
+        //    LinearEquation equation = first;
+        //    equation.coefficients[0] /= second;
+        //    return equation;
+        //}
         static public LinearEquation operator -(LinearEquation first, float second)
         {
             LinearEquation equation = first;
-            equation.coefficients[0] /= second;
+            equation.coefficients[equation.Size-1] -= second;
             return equation;
         }
         public override bool Equals(object obj)
@@ -58,15 +71,19 @@ namespace LW_Equation
             if (obj is LinearEquation equation)
             {
                 if (Size != equation.Size)
-                    return true;
+                    // return true;
+                    return false;
                 for (int i = 0; i < Size; i++)
                 {
                     if (this.coefficients[i] != equation.coefficients[i])
-                        return true;
+                        //return true;
+                        return false;
                 }
-                return false;
+                //return false;
+                return true;
             }
-            return true;
+            //return true;
+            return false;
         }
         static public bool operator ==(LinearEquation first, LinearEquation second)
         {
@@ -78,7 +95,8 @@ namespace LW_Equation
         }
         public float this[int i]
         {
-            get { return 0; }
+            get { return coefficients[i]; }
+            set { coefficients[i] = value; }
         }
     }
 }
