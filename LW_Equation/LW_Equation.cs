@@ -38,12 +38,6 @@ namespace LW_Equation
         /// <summary>
         /// Суммирует свободный член first с second
         /// </summary>
-        //static public LinearEquation operator +(LinearEquation first, float second)
-        //{
-        //    LinearEquation equation = first;
-        //    equation.coefficients[0] *= second;
-        //    return equation;
-        //}
         static public LinearEquation operator +(LinearEquation first, float second)
         {
             LinearEquation equation = first;
@@ -53,16 +47,10 @@ namespace LW_Equation
         /// <summary>
         /// Вычитает second из свободного члена first
         /// </summary>
-        //static public LinearEquation operator -(LinearEquation first, float second)
-        //{
-        //    LinearEquation equation = first;
-        //    equation.coefficients[0] /= second;
-        //    return equation;
-        //}
         static public LinearEquation operator -(LinearEquation first, float second)
         {
             LinearEquation equation = first;
-            equation.coefficients[equation.Size-1] -= second;
+            equation.coefficients[equation.Size - 1] -= second;
             return equation;
         }
         public override bool Equals(object obj)
