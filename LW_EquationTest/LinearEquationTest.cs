@@ -199,8 +199,16 @@ namespace LW_EquationTest
         {
             LinearEquation a = new LinearEquation(0, 3);
             LinearEquation b = new LinearEquation(2, 4);
+
             Assert.AreEqual(a, false);
             Assert.AreEqual(b, true);
+        }
+        [TestMethod]
+        public void LinearEquationTestOpeartorEqMinusFloat10()
+        {
+            LinearEquation a = new LinearEquation(1, 2);
+            int result = -2 / 1;
+            Assert.AreEqual(-2, result);
         }
     }
 }

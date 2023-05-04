@@ -116,5 +116,13 @@ namespace LW_Equation
                 return false;
             }
         }
+        static public float answer(LinearEquation first)
+        {
+            int last = first.Size - 1;
+            if (first[last] == 0)
+                return 0;
+            float result = -first[1]/first[0];
+            return result;
+        }
     }
 }
