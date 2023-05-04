@@ -156,5 +156,14 @@ namespace LW_Equation
             }
             return new LinearEquation(result);
         }
+        static public LinearEquation Multi(LinearEquation first, float b)
+        {
+            List<float> result = new List<float>();
+            for (int i = 0; i < first.Size; i++)
+            {
+                result.Add(first[i]*b);
+            }
+            return new LinearEquation(result);
+        }
     }
 }
