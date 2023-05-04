@@ -218,5 +218,15 @@ namespace LW_EquationTest
 
             Assert.AreEqual("1x + 3 = 0", result);
         }
+        [TestMethod]
+        public void LinearEquationTestOpeartorEqMinusFloat12()
+        {
+            Random rand = new Random();
+            int a = rand.Next(20);
+            int b = rand.Next(20);
+            LinearEquation result = new LinearEquation(a, b);
+
+            Assert.AreEqual(new LinearEquation(a, b), result);
+        }
     }
 }

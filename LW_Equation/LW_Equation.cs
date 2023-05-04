@@ -134,5 +134,16 @@ namespace LW_Equation
             str += first[first.Size - 1] + " = 0";
             return str;
         }
+        static public LinearEquation Rand(LinearEquation first)
+        {
+            Random rand = new Random();
+            List<float> result = new List<float>();
+            for (int i = 0; i < first.Size; i++)
+            {
+                int a = rand.Next(20);
+                result.Add(a);
+            }
+            return new LinearEquation(result);
+        }
     }
 }
