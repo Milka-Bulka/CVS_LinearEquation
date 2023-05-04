@@ -228,5 +228,14 @@ namespace LW_EquationTest
 
             Assert.AreEqual(new LinearEquation(a, b), result);
         }
+        [TestMethod]
+        public void LinearEquationTestOpeartorEqMinusFloat13()
+        {
+            Random rand = new Random();
+            int a = rand.Next(20);
+            LinearEquation result = new LinearEquation(a, a);
+
+            Assert.AreEqual(new LinearEquation(a, a), result);
+        }
     }
 }

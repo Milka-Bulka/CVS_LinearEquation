@@ -145,5 +145,16 @@ namespace LW_Equation
             }
             return new LinearEquation(result);
         }
+        static public LinearEquation Same_value(LinearEquation first)
+        {
+            Random rand = new Random();
+            int a = rand.Next(20);
+            List<float> result = new List<float>();
+            for (int i = 0; i < first.Size; i++)
+            {
+                result.Add(a);
+            }
+            return new LinearEquation(result);
+        }
     }
 }
