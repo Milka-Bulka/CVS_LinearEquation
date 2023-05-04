@@ -86,7 +86,7 @@ namespace LW_Equation
             List<float> result= new List<float>();
             for (int i = 0; i < second.Size; i++)
             {
-                result.Add(first[i] -= second[i]);
+                result.Add(first[i] - second[i]);
             }
             return new LinearEquation(result);
         }
@@ -97,9 +97,24 @@ namespace LW_Equation
             List<float> result = new List<float>();
             for (int i = 0; i < second.Size; i++)
             {
-                result.Add(first[i] += second[i]);
+                result.Add(first[i] + second[i]);
             }
             return new LinearEquation(result);
+        }
+        static public implicit operator bool(LinearEquation first)
+        {
+            int last = first.Size - 1;
+            if (first[last] == 0)
+                return true;
+            else
+            {
+                for (int i = 0; i < last; i++)
+                {
+                    if (first[i] != 0)
+                        return true;
+                }
+                return false;
+            }
         }
     }
 }
