@@ -237,5 +237,14 @@ namespace LW_EquationTest
 
             Assert.AreEqual(new LinearEquation(a, a), result);
         }
+        public void LinearEquationTestOpeartorEqMinusFloat14()
+        {
+            LinearEquation a = new LinearEquation(1, 3);
+            float b = 2.4F;
+
+            LinearEquation result = new LinearEquation(1*b, 3*b);
+
+            Assert.AreEqual(new LinearEquation(2.4F, 7.2F), result);
+        }
     }
 }
