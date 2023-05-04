@@ -210,5 +210,13 @@ namespace LW_EquationTest
             int result = -2 / 1;
             Assert.AreEqual(-2, result);
         }
+        [TestMethod]
+        public void LinearEquationTestOpeartorEqMinusFloat11()
+        {
+            LinearEquation a = new LinearEquation(1, 3);
+            string result = "1x + 3 = 0";
+
+            Assert.AreEqual("1x + 3 = 0", result);
+        }
     }
 }

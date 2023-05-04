@@ -8,7 +8,6 @@ namespace LW_Equation
 {
     public class LinearEquation
     {
-        //List<float> coefficients;
         List<float> coefficients = new List<float>();
         public int Size => coefficients.Count;
 
@@ -123,6 +122,17 @@ namespace LW_Equation
                 return 0;
             float result = -first[1]/first[0];
             return result;
+        }
+        static public string ToString(LinearEquation first)
+        {
+            string[] symbol = new string[] { "x", "y", "z" };
+            string str = "";
+            for (int i = 0; i < first.Size-1; i++)
+            {
+                str = first[i] + symbol[i] + " + "; 
+            }
+            str += first[first.Size - 1] + " = 0";
+            return str;
         }
     }
 }
