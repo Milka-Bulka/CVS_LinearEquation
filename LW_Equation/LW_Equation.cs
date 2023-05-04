@@ -26,7 +26,6 @@ namespace LW_Equation
         /// <param name="aN">Последний коэффициент</param>
         /// <param name="coefficients">Остальные коэффициенты</param>
         /// 
-
         public LinearEquation(params float[] coefficients)
         {
             this.coefficients.AddRange(coefficients);
@@ -71,18 +70,14 @@ namespace LW_Equation
             if (obj is LinearEquation equation)
             {
                 if (Size != equation.Size)
-                    // return true;
                     return false;
                 for (int i = 0; i < Size; i++)
                 {
                     if (this.coefficients[i] != equation.coefficients[i])
-                        //return true;
                         return false;
                 }
-                //return false;
                 return true;
             }
-            //return true;
             return false;
         }
         static public bool operator ==(LinearEquation first, LinearEquation second)
