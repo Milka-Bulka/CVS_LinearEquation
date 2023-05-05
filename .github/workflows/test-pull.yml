@@ -1,0 +1,48 @@
+name: Build and test latest pull to this repository
+
+on:
+  push:
+env:
+  DOTNET_NOLOGO: 1
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  NUGET_PACKAGES: ${{ github.workspace }}/.github/nuget-packages
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache NuGet Packages
+        uses: pat-s/always-upload-cache@v3.0.1
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: ${{ runner.os }}.nuget.${{ hashFiles('**/*.csproj') }}
+          restore-keys: ${{ runner.os }}.nuget.
+
+      - name: Setup .NET Core SDK # ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+              5.0.x
+              6.0.x
+              7.0.x
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --no-restore --verbosity m  --logger trx --results-directory "TestResults-${{ env.DOTNET_VERSION }}"
+
+#     Uncomment if need to upload test results: 
+      # - name: Upload dotnet test results
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: dotnet-results-${{ env.DOTNET_VERSION }}
+      #     path: TestResults-${{ env.DOTNET_VERSION }}
+      #   # Use always() to always run this step to publish test results when there are test failures
+      #   if: ${{ always() }}
